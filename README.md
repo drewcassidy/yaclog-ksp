@@ -29,7 +29,7 @@ Options:
 
 ```
 
-for example, running `yaclog-ksp -i MyLog.md -n My KSP Mod`
+for example, running `yaclog-ksp -i MyLog.md -n "My KSP Mod"`
 would output to `GameData/MyKSPMod/Versioning/MyKSPModChangeLog.cfg`
 
 Input files are in markdown, and use a certain syntax to be readable by the tool. Metadata is included in a table at the
