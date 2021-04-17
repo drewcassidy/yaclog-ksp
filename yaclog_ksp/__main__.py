@@ -14,11 +14,11 @@
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import click
-import os.path
-import yaclog
-import re
 import pathlib
+import re
+import click
+import yaclog
+
 from yaclog_ksp.cfgnode import ConfigNode
 
 
