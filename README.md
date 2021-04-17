@@ -34,7 +34,7 @@ would output to `GameData/MyKSPMod/Versioning/MyKSPModChangeLog.cfg`
 
 Input files are in markdown, and use a certain syntax to be readable by the tool. Metadata is included in a table at the
 top of the file (which row you make the header doesnt matter). Each version is an subheading with the version, an
-optional data, and the KSP version as a tag on the end in brackets
+optional date, and the KSP version as a tag on the end in brackets
 
 #### Example Changelog:
 
