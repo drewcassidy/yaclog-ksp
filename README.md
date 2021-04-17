@@ -4,7 +4,7 @@ A command line tool for converting markdown changelogs to [KerbalChangelog] conf
 
 ## Installation
 
-run `pip install git+https://github.com/drewcassidy/yaclog-ksp.git`
+run `pip install yaclog-ksp`
 
 ## Usage
 

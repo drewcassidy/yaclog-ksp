@@ -64,12 +64,6 @@ def main(inpath, outpath, name):
         # add entries
         for section, entries in version.sections.items():
             for entry in entries:
-                e_node = v_node.add_new_node('CHANGE')
-
-                if section:
-                    # KerbalChangelog only actually cares about the first character,
-                    # so dont bother correcting "Fixed"->"Fix", etc
-                    e_node.add_value('type', section.title())
 
                 bullets = re.findall(r'^[\t ]*[-+*] (.*?)$', entry, flags=re.MULTILINE)
 
@@ -82,9 +76,20 @@ def main(inpath, outpath, name):
                     change = bullets[0]
                     subchanges = bullets[1:]
 
-                e_node.add_value('change', change)
-                for sc in subchanges:
-                    e_node.add_value('subchange', sc)
+                if section or len(subchanges) > 0:
+                    e_node = v_node.add_new_node('CHANGE')
+
+                    if section:
+                        # KerbalChangelog only actually cares about the first character,
+                        # so dont bother correcting "Fixed"->"Fix", etc
+                        e_node.add_value('type', section.title())
+
+                    e_node.add_value('change', change)
+                    for sc in subchanges:
+                        e_node.add_value('subchange', sc)
+
+                else:
+                    v_node.add_value('change', change)
 
     with open(outpath, 'w') as fp:
         fp.write('KERBALCHANGELOG\n')
