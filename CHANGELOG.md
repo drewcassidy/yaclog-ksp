@@ -1,12 +1,13 @@
 # Changelog
 
-All notable changes to this project will be documented in this file
+All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
-### Added
+### Changed
 
-- Comment in generated files stating that it was automatically created by this tool
+- Generator now adds a comment to files stating they were automatically created by this tool.
+- Tweaks and fixes to project metadata in setup.cfg.
 
 ## 0.1.1 - 2021-04-16
 
@@ -22,4 +23,4 @@ First release
 
 ### Added
 
-- `yaclog-ksp` command line tool for converting markdown changelogs to KerbalChangelog configs
+- `yaclog-ksp` command line tool for converting markdown changelogs to KerbalChangelog configs.
