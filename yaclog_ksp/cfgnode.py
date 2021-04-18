@@ -72,8 +72,8 @@ class ConfigNode:
             cfg_error(script, "unexpected end of file")
 
     @classmethod
-    def load(cls, textv):
-        script = Script("", textv, "{}=", False)
+    def load(cls, text):
+        script = Script("", text, "{}=", False)
         script.error = cfg_error.__get__(script, Script)
         nodes = []
         while script.token_available(True):
@@ -176,21 +176,10 @@ class ConfigNode:
             segments[index] = "%s%s = %s\n" % ("    " * (level + 1), val[0], val[1])
             index += 1
         for node in self.nodes:
-            ntext = node[1].__str__(level + 1)
-            segments[index] = "%s%s %s\n" % ("    " * (level + 1), node[0], ntext)
+            text = node[1].__str__(level + 1)
+            segments[index] = "%s%s %s\n" % ("    " * (level + 1), node[0], text)
             index += 1
         if level >= 0:
             segments[index] = "%s}\n" % ("    " * level)
             index += 1
         return "".join(segments)
-
-
-if __name__ == "__main__":
-    import sys
-
-    for arg in sys.argv[1:]:
-        text = open(arg, "rt").read()
-        try:
-            node = ConfigNode.load(text)
-        except ConfigNodeError as e:
-            print(arg + e.message)
