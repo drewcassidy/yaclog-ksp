@@ -2,12 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## 0.2.0 - 2021-05-06
 
 ### Changed
 
 - Generator now adds a comment to files stating they were automatically created by this tool.
 - Tweaks and fixes to project metadata in setup.cfg.
+- Marked version compatibility with yaclog.
 
 ## 0.1.1 - 2021-04-16
 

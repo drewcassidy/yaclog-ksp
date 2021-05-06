@@ -1,6 +1,10 @@
 # yaclog-ksp
 
-A command line tool for converting markdown changelogs to [KerbalChangelog] config files.
+A command line tool based on [yaclog] for converting markdown changelogs to [KerbalChangelog] config files.
+
+![a yak who is a log](https://github.com/drewcassidy/yaclog/raw/main/logo.png)
+
+*Logo by Erin Cassidy*
 
 ## Installation
 
@@ -81,4 +85,5 @@ but this paragraph works pretty well to get the point across!
 
 ```
 
+[yaclog]: https://github.com/drewcassidy/yaclog
 [KerbalChangelog]: https://github.com/HebaruSan/KerbalChangelog
