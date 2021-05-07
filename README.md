@@ -20,9 +20,7 @@ Usage: yaclog-ksp [OPTIONS]
   Converts markdown changelogs to KSP changelog configs.
 
 Options:
-  -i, --input FILE   Input markdown file to read from.  [default:
-                     CHANGELOG.md]
-
+  --path FILE        Location of the changelog file.  [default: CHANGELOG.md]
   -o, --output FILE  Output file to write to. Uses
                      'GameData/{name}/Versioning/{name}ChangeLog.cfg' by
                      default.
@@ -32,10 +30,9 @@ Options:
 
   --version          Show the version and exit.
   --help             Show this message and exit.
-
 ```
 
-for example, running `yaclog-ksp -i MyLog.md -n "My KSP Mod"`
+for example, running `yaclog-ksp --path MyLog.md -n "My KSP Mod"`
 would output to `GameData/MyKSPMod/Versioning/MyKSPModChangeLog.cfg`
 
 Input files are in markdown, and use a certain syntax to be readable by the tool. Metadata is included in a table at the
