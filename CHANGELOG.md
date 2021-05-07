@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Changed
+
+- Updated API for yaclog to 1.0.0
+
 ## 0.2.0 - 2021-05-06
 
 ### Changed

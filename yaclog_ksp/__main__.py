@@ -52,7 +52,7 @@ def main(inpath, outpath, name):
     node = ConfigNode()
 
     # find metadata table rows
-    for key, value in re.findall(r'^\|(?P<key>[^\n-]*?)\|(?P<value>[^\n-]*?)\|$', log.header, flags=re.MULTILINE):
+    for key, value in re.findall(r'^\|(?P<key>[^\n-]*?)\|(?P<value>[^\n-]*?)\|$', log.preamble, flags=re.MULTILINE):
         key = key.strip()
         value = value.strip()
         if key.strip(':-'):
