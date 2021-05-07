@@ -23,17 +23,16 @@ from yaclog_ksp.cfgnode import ConfigNode
 
 
 @click.command()
-@click.option('-i', '--input', 'inpath',
-              default='CHANGELOG.md', show_default=True,
-              type=click.Path(readable=True, exists=True, dir_okay=False),
-              help="Input markdown file to read from.")
+@click.option('--path', envvar='YACLOG_PATH', default='CHANGELOG.md', show_default=True,
+              type=click.Path(dir_okay=False, writable=True, readable=True),
+              help='Location of the changelog file.')
 @click.option('-o', '--output', 'outpath',
               default=None,
               type=click.Path(writable=True, dir_okay=False),
               help="Output file to write to. Uses 'GameData/{name}/Versioning/{name}ChangeLog.cfg' by default.")
 @click.option('-n', '--name', help="The name of the mod. Derived from the current directory by default.")
 @click.version_option()
-def main(inpath, outpath, name):
+def main(path, outpath, name):
     """ Converts markdown changelogs to KSP changelog configs."""
     if not name:
         # try to guess name from current directory
@@ -48,7 +47,7 @@ def main(inpath, outpath, name):
         # default is in GameData/{name}/Versioning/{name}ChangeLog.cfg
         outpath = pathlib.Path('GameData', modslug, 'Versioning', modslug + 'ChangeLog.cfg')
 
-    log = yaclog.read(inpath)
+    log = yaclog.read(path)
     node = ConfigNode()
 
     # find metadata table rows

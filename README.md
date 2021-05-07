@@ -1,5 +1,7 @@
 # yaclog-ksp
 
+[![PyPI version](https://badge.fury.io/py/yaclog-ksp.svg)](https://badge.fury.io/py/yaclog-ksp)
+
 A command line tool based on [yaclog] for converting markdown changelogs to [KerbalChangelog] config files.
 
 ![a yak who is a log](https://github.com/drewcassidy/yaclog/raw/main/logo.png)
