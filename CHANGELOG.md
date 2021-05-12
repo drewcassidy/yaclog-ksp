@@ -9,7 +9,7 @@ All notable changes to this project will be documented in this file.
 - Updated to support Click version 8
 
 
-## 1.0.0 - 2021-05-07
+## Version 1.0.0 - 2021-05-07
 
 ### Changed
 
@@ -17,7 +17,7 @@ All notable changes to this project will be documented in this file.
 - Renamed '--input' option to '--path' for consistency with yaclog, and added an environment variable for its value
 
 
-## 0.2.0 - 2021-05-06
+## Version 0.2.0 - 2021-05-06
 
 ### Changed
 
@@ -26,7 +26,7 @@ All notable changes to this project will be documented in this file.
 - Marked version compatibility with yaclog.
 
 
-## 0.1.1 - 2021-04-16
+## Version 0.1.1 - 2021-04-16
 
 yaclog-ksp is [now available on PyPi!](https://pypi.org/project/yaclog-ksp/)
 
@@ -35,7 +35,7 @@ yaclog-ksp is [now available on PyPi!](https://pypi.org/project/yaclog-ksp/)
 - Generator will now use change values instead of nodes when possible for more concise output files.
 
 
-## 0.1.0 - 2021-04-16
+## Version 0.1.0 - 2021-04-16
 
 First release
 
