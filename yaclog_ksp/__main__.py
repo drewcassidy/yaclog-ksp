@@ -39,7 +39,7 @@ def main(path, outpath, name):
         pathname = pathlib.Path.cwd().name.removeprefix('KSP-')
         modslug = str.join('', [s.title() for s in re.split(r'[ _-]+', pathname)])
         segments = re.findall(r'[A-Z](?:[a-z]+|[A-Z]*(?=[A-Z]|$))', modslug)
-        name = segments[0] + [' ' + s for s in segments[1:]]
+        name = ' '.join(segments)
     else:
         modslug = str.join('', [s.title() for s in re.split(r'[ _-]+', name)])
 
