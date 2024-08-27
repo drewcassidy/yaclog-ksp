@@ -16,6 +16,8 @@
 
 import pathlib
 import re
+from sys import stdout
+
 import click
 import yaclog
 
@@ -111,7 +113,10 @@ def main(path, outpath, name):
         fp.write('KERBALCHANGELOG\n')
         fp.write(str(node))
 
-    print(f'wrote output to {outpath}')
+    if stdout.isatty():
+        print(f'wrote output to {outpath}')
+    else:
+        print(outpath)
 
 
 if __name__ == '__main__':
