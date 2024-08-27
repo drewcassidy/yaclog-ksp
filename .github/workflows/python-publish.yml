@@ -1,49 +1,46 @@
 # This workflow will upload a Python Package using Twine when a release is created
 # For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
 
-name: build
-on: [ push, pull_request ]
+name: Deploy
+on: [ push ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+    environment:
+      name: pypi
+      url: https://pypi.org/p/yaclog-ksp
+    permissions:
+      id-token: write
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5.1.1
         with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install setuptools wheel twine
-          python -m pip install yaclog
+          python-version: '>=3.8'
 
       - name: Install pypa/build
         run: python -m pip install build --user
 
-      - name: Build a binary wheel and source tarball
+      - name: Build a Binary Wheel and Source Tarball
         run: python -m build --sdist --wheel --outdir dist/
 
-      - name: Get version name and body
-        run: |
-          echo "VERSION_TILE=$(yaclog show -n)" >> $GITHUB_ENV
-          echo "$(yaclog show -mb)" >> RELEASE.md
+      - name: Get Changelog Information
+        uses: drewcassidy/yaclog@1.4.1
+        id: yaclog-show
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
 
       - name: Publish to Github
-        uses: softprops/action-gh-release@v1
-        with:
-          files: dist/*
-          name: ${{ env.VERSION_TITLE }}
-          body_path: RELEASE.md
+        run: |
+          gh release create ${{ github.ref_name }} \
+            --notes-file "${{ steps.yaclog-show.outputs.body_file }}" \
+            --title "${{ steps.yaclog-show.outputs.name }}"
+          
+          gh release upload ${{ github.ref_name }} dist/*
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
