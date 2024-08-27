@@ -47,6 +47,7 @@ Changelog = "https://github.com/drewcassidy/yaclog-ksp/blob/main/CHANGELOG.md"
 "Forum Post" = "https://forum.kerbalspaceprogram.com/index.php?/topic/201784-*"
 
 [tool.setuptools_scm]
+fallback_version = '0.0.0'
 
 [tool.setuptools.packages.find]
 include = ["yaclog_ksp"]

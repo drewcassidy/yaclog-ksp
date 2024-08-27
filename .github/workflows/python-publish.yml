@@ -13,6 +13,7 @@ jobs:
       url: https://pypi.org/p/yaclog-ksp
     permissions:
       id-token: write
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +30,7 @@ jobs:
         run: python -m build --sdist --wheel --outdir dist/
 
       - name: Get Changelog Information
-        uses: drewcassidy/yaclog@1.4.1
+        uses: drewcassidy/yaclog@1.4.2
         id: yaclog-show
 
       - name: Publish to PyPI
