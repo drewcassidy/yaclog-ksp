@@ -33,7 +33,7 @@ classifiers = [
 requires-python = ">= 3.8"
 dependencies = [
     "Click >= 8.0",
-    "yaclog >= 1.0"
+    "yaclog ~= 1.0"
 ]
 dynamic = ["version"]
 
