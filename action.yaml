@@ -1,0 +1,43 @@
+name: Generate KSP Changelog
+description: > 
+  Use Yaclog to generate a KSP changelog config file for use with KerbalChangelog
+branding:
+  icon: file-text
+  color: green
+
+inputs:
+  changelog-path:
+    description: "Path of the changelog markdown file"
+  mod-name:
+    description: "The name of your mod"
+  output-path:
+    description: "Path of the resulting changelog file"
+
+outputs:
+  output-path:
+    description: "Path of the resulting changelog file"
+    value: ${{ steps.yaclog-ksp.outputs.output-path}}
+
+runs:
+  using: "composite"
+  steps:
+    - id: setup-python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        update-environment: 'false'
+
+    - name: Setup Yaclog-KSP
+      shell: bash
+      run: pipx install --python ${{ steps.setup-python.outputs.python-path }} ${{ github.action_path }}
+
+    - name: Generate KSP Changelog
+      id: yaclog-ksp
+      shell: bash
+      run: >
+        cat "output-path=$(
+        yaclog-ksp
+        ${{ inputs.changelog-path && format('--path {0}', inputs.changelog-path) }}
+        ${{ inputs.mod-name && format('--name {0}', inputs.mod-name) }}
+        ${{ inputs.output-path && format('--output {0}', inputs.output-path) }}
+        )" >> "$GITHUB_OUTPUT"
