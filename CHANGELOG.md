@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## Version 1.0.3 - 2024-08-27
+
+### Changed
+
+- Adjusted dependencies. Click <8 is no longer supported
+- When stdout is not a tty, only the output file path is printed
+
+### Added
+
+- Added Github Action
+
+
 ## Version 1.0.2 - 2021-05-12
 
 ### Changed
