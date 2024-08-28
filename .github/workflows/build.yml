@@ -1,0 +1,80 @@
+# This workflow will upload a Python Package using Twine when a release is created
+# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+
+name: build
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    name: Build Distribution
+    runs-on: ubuntu-22.04
+    outputs:
+      body_file: ${{ steps.yaclog-show.outputs.body_file }}
+      version_name: ${{ steps.yaclog-show.outputs.name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5.1.1
+        with:
+          python-version: '3.12'
+
+      - name: Get Changelog Information
+        id: yaclog-show
+        uses: drewcassidy/yaclog@1.4.2
+
+      - name: Install pypa/build
+        run: python -m pip install build --user
+
+      - name: Build a binary wheel and source tarball
+        run: python -m build --sdist --wheel --outdir dist/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: python-distribution
+          path: dist/
+          compression-level: 0 # already compressed
+
+  publish-pypi:
+    name: Deploy to PyPI
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+    needs: build
+    runs-on: ubuntu-22.04
+    environment:
+      name: Publish
+      url: https://pypi.org/project/yaclog-ksp/${{ github.ref_name }}
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-distribution
+          path: dist/
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+  publish-github:
+    name: Deploy to Github
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+    needs: build
+    runs-on: ubuntu-22.04
+    environment:
+      name: Publish
+      url: https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-distribution
+          path: dist/
+
+      - name: Publish to Github
+        run: >
+          gh release create ${{ github.ref_name }}
+          --notes-file "${{ needs.build.outputs.body_file }}"
+          --title "${{ needs.build.outputs.version_name }}"
+          dist/*
+        env:
+          GH_TOKEN: ${{ github.token }}
