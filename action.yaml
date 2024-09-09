@@ -35,7 +35,7 @@ runs:
       id: yaclog-ksp
       shell: bash
       run: >
-        cat "output-path=$(
+        echo "output-path=$(
         yaclog-ksp
         ${{ inputs.changelog-path && format('--path {0}', inputs.changelog-path) }}
         ${{ inputs.mod-name && format('--name {0}', inputs.mod-name) }}
