@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## Version 1.0.4 - 2024-09-09
+
+### Fixed
+
+- Fixed action failint to run
+
+
 ## Version 1.0.3 - 2024-08-27
 
 ### Changed
