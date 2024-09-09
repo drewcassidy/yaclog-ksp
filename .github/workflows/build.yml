@@ -16,6 +16,17 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Self Test
+        id: yaclog-ksp
+        uses: ./
+        with:
+          mod-name: Dummy
+          output-path: /tmp/version.cfg
+
+      - name: Print self-test result
+        run:
+          cat '${{ steps.yaclog-ksp.outputs.output-path }}'
+
       - name: Install pypa/build
         run: python -m pip install build --user
 
