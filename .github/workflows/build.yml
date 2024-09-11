@@ -60,7 +60,7 @@ jobs:
 
       - name: Get Changelog Information
         id: yaclog-show
-        uses: drewcassidy/yaclog@1.4.3
+        uses: drewcassidy/yaclog@1.4.4
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
