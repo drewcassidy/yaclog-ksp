@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Relicensed code under Apache-2.0 license
+- Dropped support for python 3.8
 
 
 ## Version 1.0.4 - 2024-09-09
