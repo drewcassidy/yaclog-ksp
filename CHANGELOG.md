@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## Version 1.1.0 - 2024-10-16
+## Unreleased
+
+### Changed
+
+- Reverted license to GPLv3 due to included cfgnode.py
+
+
+## Version 1.1.0 - 2024-10-16 [YANKED]
 
 ### Changed
 
