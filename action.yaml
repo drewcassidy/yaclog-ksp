@@ -21,23 +21,28 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - id: setup-python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.12'
-        update-environment: 'false'
-
-    - name: Setup Yaclog-KSP
+    - name: Setup uv
       shell: bash
-      run: pipx install --python ${{ steps.setup-python.outputs.python-path }} ${{ github.action_path }}
+      run: | 
+        if ! command -v uv >/dev/null 2>&1; then
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+        else
+          echo "uv already installed"
+        fi
+      env:
+        UV_UNMANAGED_INSTALL: /usr/local/bin
 
     - name: Generate KSP Changelog
       id: yaclog-ksp
       shell: bash
       run: >
         echo "output-path=$(
-        yaclog-ksp
+        uv run -m yaclog-ksp
         ${{ inputs.changelog-path && format('--path {0}', inputs.changelog-path) }}
         ${{ inputs.mod-name && format('--name {0}', inputs.mod-name) }}
         ${{ inputs.output-path && format('--output {0}', inputs.output-path) }}
         )" >> "$GITHUB_OUTPUT"
+      env:
+        UV_PROJECT: ${{ github.action_path }}
+        UV_LINK_MODE: copy
+        UV_FROZEN: true
