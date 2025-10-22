@@ -1,16 +1,26 @@
 # yaclog-ksp
 
-[![PyPI version](https://badge.fury.io/py/yaclog-ksp.svg)](https://badge.fury.io/py/yaclog-ksp)
+[![PyPI version](https://img.shields.io/pypi/v/yaclog-ksp)](https://pypi.org/project/yaclog-ksp/)
 
 A command line tool based on [yaclog] for converting markdown changelogs to [KerbalChangelog] config files.
 
-![a yak who is a log](https://github.com/drewcassidy/yaclog/raw/main/logo.png)
+![a yak who is a log](https://git.offworldcolonies.nexus/drewcassidy/yaclog/raw/branch/main/logo.png)
 
 *Logo by Erin Cassidy*
 
 ## Installation
 
-run `pip install yaclog-ksp`
+Install and update with [pip](https://pip.pypa.io/en/stable/getting-started/):
+
+```shell
+$ pip install -U yaclog-ksp
+```
+
+Or with [uv](https://docs.astral.sh/uv/getting-started/):
+
+```shell
+$ uv tool install yaclog-ksp
+```
 
 ## Usage
 
@@ -84,5 +94,5 @@ but this paragraph works pretty well to get the point across!
 
 ```
 
-[yaclog]: https://github.com/drewcassidy/yaclog
+[yaclog]: https://git.offworldcolonies.nexus/drewcassidy/yaclog
 [KerbalChangelog]: https://github.com/HebaruSan/KerbalChangelog
