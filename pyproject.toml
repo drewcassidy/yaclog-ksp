@@ -11,11 +11,11 @@ name = "yaclog-ksp"
 description = "Kerbal Space Program changelog file generator"
 readme = "README.md"
 authors = [{ name = "Andrew Cassidy", email = "drewcassidy@me.com" }]
+license = "AGPL-3.0-or-later"
 keywords = ["changelog", "commandline", "markdown", "KSP"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: GNU Affero General Public License v3",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3",
@@ -25,10 +25,10 @@ classifiers = [
     "Topic :: Games/Entertainment :: Simulation"
 ]
 
-requires-python = ">= 3.9"
+requires-python = ">= 3.10"
 dependencies = [
     "Click >= 8.0",
-    "yaclog ~= 1.0"
+    "yaclog >= 1.6"
 ]
 dynamic = ["version"]
 
@@ -37,8 +37,8 @@ dynamic = ["version"]
 yaclog-ksp = "yaclog_ksp.__main__:main"
 
 [project.urls]
-Source = "https://github.com/drewcassidy/yaclog-ksp"
-Changelog = "https://github.com/drewcassidy/yaclog-ksp/blob/main/CHANGELOG.md"
+Source = "https://git.offworldcolonies.nexus/drewcassidy/yaclog-ksp"
+Changelog = "https://git.offworldcolonies.nexus/drewcassidy/yaclog-ksp/src/branch/main/CHANGELOG.md"
 "Forum Post" = "https://forum.kerbalspaceprogram.com/index.php?/topic/201784-*"
 
 [tool.setuptools_scm]
