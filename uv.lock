@@ -76,7 +76,7 @@ wheels = [
 
 [[package]]
 name = "yaclog"
-version = "1.6.0"
+version = "1.6.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click" },
@@ -84,9 +84,9 @@ dependencies = [
     { name = "packaging" },
     { name = "tomlkit" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f7/49/97e7637b3705bc970755542ed04b2cf86966733216c4ca2d20fef025ee6e/yaclog-1.6.0.tar.gz", hash = "sha256:59fca5488ba3d681197c1686529ae2dc07f3819b3d75a42a8860ef1ca4e3fe46", size = 129063, upload-time = "2025-10-21T07:49:18.094Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/80/38/1c734802772229d6fd30c83e82df217ffc206acd78b1ba26854ba2dc8836/yaclog-1.6.2.tar.gz", hash = "sha256:4f5731a49ef6d0d95afe487e7f6f9953f6f7526e8170b7e5dc643ad76e253b13", size = 129225, upload-time = "2025-10-22T07:30:48.13Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/87/05/c878f70714cc9c90fe8d9a00fcd4ce79751484b1dda5d809e9534d0332ea/yaclog-1.6.0-py3-none-any.whl", hash = "sha256:55af555e1d8d6c14f2d1b5bed8605051d4d43bf171906dd81e3ca7b7fd9d43a6", size = 21125, upload-time = "2025-10-21T07:49:16.66Z" },
+    { url = "https://files.pythonhosted.org/packages/de/e9/7d7f5f3aeea1c9b6155c4a0db8a7d02bfa9e3cc897df97fae340080784f9/yaclog-1.6.2-py3-none-any.whl", hash = "sha256:7b9781487eca4703992d407f79912938980efa110c7b29f049d9cd6830d7fde3", size = 21139, upload-time = "2025-10-22T07:30:46.347Z" },
 ]
 
 [[package]]
