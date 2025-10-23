@@ -1,5 +1,6 @@
 # yaclog-ksp
 
+[![CI Status](https://git.offworldcolonies.nexus/drewcassidy/yaclog-ksp/badges/workflows/build.yml/badge.svg?branch=main&label=build)](https://git.offworldcolonies.nexus/drewcassidy/yaclog-ksp/actions)
 [![PyPI version](https://img.shields.io/pypi/v/yaclog-ksp)](https://pypi.org/project/yaclog-ksp/)
 
 A command line tool based on [yaclog] for converting markdown changelogs to [KerbalChangelog] config files.
