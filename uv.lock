@@ -77,16 +77,16 @@ wheels = [
 [[package]]
 name = "yaclog"
 version = "1.6.2"
-source = { registry = "https://pypi.org/simple" }
+source = { registry = "https://git.offworldcolonies.nexus/api/packages/drewcassidy/pypi/simple/" }
 dependencies = [
     { name = "click" },
     { name = "gitpython" },
     { name = "packaging" },
     { name = "tomlkit" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/80/38/1c734802772229d6fd30c83e82df217ffc206acd78b1ba26854ba2dc8836/yaclog-1.6.2.tar.gz", hash = "sha256:4f5731a49ef6d0d95afe487e7f6f9953f6f7526e8170b7e5dc643ad76e253b13", size = 129225, upload-time = "2025-10-22T07:30:48.13Z" }
+sdist = { url = "https://git.offworldcolonies.nexus/api/packages/drewcassidy/pypi/files/yaclog/1.6.2/yaclog-1.6.2.tar.gz", hash = "sha256:4f5731a49ef6d0d95afe487e7f6f9953f6f7526e8170b7e5dc643ad76e253b13" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/de/e9/7d7f5f3aeea1c9b6155c4a0db8a7d02bfa9e3cc897df97fae340080784f9/yaclog-1.6.2-py3-none-any.whl", hash = "sha256:7b9781487eca4703992d407f79912938980efa110c7b29f049d9cd6830d7fde3", size = 21139, upload-time = "2025-10-22T07:30:46.347Z" },
+    { url = "https://git.offworldcolonies.nexus/api/packages/drewcassidy/pypi/files/yaclog/1.6.2/yaclog-1.6.2-py3-none-any.whl", hash = "sha256:7b9781487eca4703992d407f79912938980efa110c7b29f049d9cd6830d7fde3" },
 ]
 
 [[package]]

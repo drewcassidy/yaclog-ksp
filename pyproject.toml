@@ -49,3 +49,8 @@ include = ["yaclog_ksp"]
 
 [tool.uv]
 cache-keys = [{ file = "pyproject.toml" }, { git = { commit = true } }]
+
+[[tool.uv.index]]
+name = "offworldcolonies-drewcassidy"
+url = "https://git.offworldcolonies.nexus/api/packages/drewcassidy/pypi/simple/"
+# not strictly necessary, all packages here also exist on PyPI
