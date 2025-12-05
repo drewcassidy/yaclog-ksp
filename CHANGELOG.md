@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Fixed
+
+- Fixed arguments not being passed as quoted strings in CI action
+
+
 ## Version 1.3.0 - 2025-10-23
 
 ### Removed
