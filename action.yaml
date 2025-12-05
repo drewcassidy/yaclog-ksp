@@ -38,9 +38,9 @@ runs:
       run: >
         echo "output-path=$(
         uv run -m yaclog_ksp
-        ${{ inputs.changelog-path && format('--path {0}', inputs.changelog-path) }}
-        ${{ inputs.mod-name && format('--name {0}', inputs.mod-name) }}
-        ${{ inputs.output-path && format('--output {0}', inputs.output-path) }}
+        ${{ inputs.changelog-path && format('--path ''{0}''', inputs.changelog-path)  || '' }}
+        ${{ inputs.mod-name && format('--name ''{0}''', inputs.mod-name)  || '' }}
+        ${{ inputs.output-path && format('--output ''{0}''', inputs.output-path) || '' }}
         )" >> "$GITHUB_OUTPUT"
       env:
         UV_PROJECT: ${{ github.action_path }}
