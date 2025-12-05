@@ -15,22 +15,6 @@ jobs:
       - name: Checkout
         uses: https://code.forgejo.org/actions/checkout@v5
 
-      - name: Set up Python
-        uses: https://code.forgejo.org/actions/setup-python@v6
-        with:
-          python-version: 3.14
-
-      - name: Setup uv
-        shell: bash
-        run: | 
-          if ! command -v uv >/dev/null 2>&1; then
-            curl -LsSf https://astral.sh/uv/install.sh | sh
-          else
-            echo "uv already installed"
-          fi
-        env:
-          UV_UNMANAGED_INSTALL: /usr/local/bin
-
       - name: Lint with ruff
         run: |
           # stop the build if there are Python syntax errors or undefined names
