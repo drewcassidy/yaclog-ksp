@@ -1,0 +1,79 @@
+# This workflow will upload a Python Package using Twine when a release is created
+# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+
+name: push
+on: [ push, pull_request ]
+
+jobs:
+  test:
+    name: Build
+    runs-on: ubuntu-26.04
+
+    steps:
+      - name: Checkout
+        uses: https://code.forgejo.org/actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: https://code.forgejo.org/actions/setup-python@v6
+        with:
+          python-version: 3.15
+
+      - name: Set up project
+        run: pip install --editable . --group dev
+
+      - name: Lint
+        run: just lint
+
+      - name: Build
+        run: just build
+
+      - name: Upload dist
+        uses: https://code.forgejo.org/forgejo/upload-artifact@v4
+        with:
+          name: python-dist
+          path: dist/
+          compression-level: 0 # already compressed
+
+  publish:
+    name: Publish
+    if: forge.event_name == 'push' && startsWith(forge.ref, 'refs/tags')
+    needs:
+      - build
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Checkout
+        uses: https://code.forgejo.org/actions/checkout@v5
+
+      - name: Download dist
+        uses: https://code.forgejo.org/forgejo/download-artifact@v4
+        with:
+          name: python-dist
+          path: dist
+
+      - name: Get Changelog Information
+        id: yaclog-show
+        uses: https://git.offworld.city/drewcassidy/yaclog@1.7.2
+
+      - name: Create release
+        uses: https://code.forgejo.org/actions/forgejo-release@v2.11.1
+        with:
+          direction: upload
+          token: ${{ secrets.FORGEJO_TOKEN }}
+          release-dir: dist
+          title: docput ${{ steps.yaclog-show.outputs.name }}
+          release-notes-file: ${{ steps.yaclog-show.outputs.body-file }}
+          override: true
+
+      - name: Upload to PyPI
+        run: pipx run twine upload --skip-existing dist/*
+        env:
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+
+      - name: Upload to Forgejo
+        run: pipx run twine upload dist/*
+        env:
+          TWINE_USERNAME: ${{ forge.repository_owner }}
+          TWINE_PASSWORD: ${{ secrets.FORGEJO_DEPLOY_TOKEN }}
+          TWINE_REPOSITORY_URL: ${{ forge.server_url }}/api/packages/${{ forge.repository_owner }}/pypi
