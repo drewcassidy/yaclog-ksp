@@ -69,7 +69,7 @@ def main(path, outpath, name):
 
     # find metadata table rows
     for key, value in re.findall(
-        r"^\|(?P<key>[^\n-]*?)\|(?P<value>[^\n-]*?)\|$",
+        r"^\|(?!(?:\s*-+\s*\|)+$)\s*(?P<key>[^\n|]*?)\s*\|\s*(?P<value>[^\n|]*?)\s*\|\s*$",
         log.preamble,
         flags=re.MULTILINE,
     ):

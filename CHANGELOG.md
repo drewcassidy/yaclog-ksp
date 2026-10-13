@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+### Fixed
+
+- Fixed table entries with hyphens being dropped
+
+
 ## Version 1.3.1 - 2025-12-05
 
 ### Fixed
