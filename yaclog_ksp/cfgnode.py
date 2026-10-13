@@ -43,9 +43,9 @@ class ConfigNode:
                 break
             if script.token == "\xef\xbb\xbf":
                 continue
-            if script.token in (top and ['{', '}', '='] or ['{', '=']):
+            if script.token in (top and ["{", "}", "="] or ["{", "="]):
                 cfg_error(script, "unexpected " + script.token)
-            if script.token == '}':
+            if script.token == "}":
                 return
             key = script.token
             # print(key,script.line)
@@ -53,14 +53,14 @@ class ConfigNode:
                 script.get_token(True)
                 token_end = script.pos
                 line = script.line
-                if script.token == '=':
-                    value = ''
+                if script.token == "=":
+                    value = ""
                     if script.token_available(False):
                         script.get_line()
                         value = script.token.strip()
                     node.values.append((key, value, line))
                     break
-                elif script.token == '{':
+                elif script.token == "{":
                     new_node = ConfigNode()
                     ConfigNode.parse_node(new_node, script, False)
                     node.nodes.append((key, new_node, line))
@@ -167,7 +167,7 @@ class ConfigNode:
         extra = 0
         if level >= 0:
             extra = 2
-        segments = [''] * (len(self.values) + len(self.nodes) + extra)
+        segments = [""] * (len(self.values) + len(self.nodes) + extra)
         index = 0
         if level >= 0:
             segments[index] = "{\n"

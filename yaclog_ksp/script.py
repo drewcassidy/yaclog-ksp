@@ -16,6 +16,7 @@
 
 # <pep8 compliant>
 
+
 class ScriptError(Exception):
     def __init__(self, fname, line, message):
         Exception.__init__(self, "%s:%d: %s" % (fname, line, message))
@@ -54,9 +55,8 @@ class Script:
                 # end of file characters
                 self.pos += 1
                 continue
-            if self.text[self.pos:self.pos + 2] == "//":
-                while (self.pos < len(self.text)
-                       and self.text[self.pos] != "\n"):
+            if self.text[self.pos : self.pos + 2] == "//":
+                while self.pos < len(self.text) and self.text[self.pos] != "\n":
                     self.pos += 1
                 if self.pos == len(self.text):
                     return False
@@ -74,7 +74,7 @@ class Script:
                 self.line += 1
                 self.pos += 1
                 break
-            if self.text[self.pos:self.pos + 2] == "//":
+            if self.text[self.pos : self.pos + 2] == "//":
                 break
             self.pos += 1
             end = self.pos
@@ -93,30 +93,32 @@ class Script:
             if not crossline:
                 self.error("line is incomplete")
             return None
-        if self.quotes and self.text[self.pos] == "\"":
+        if self.quotes and self.text[self.pos] == '"':
             self.pos += 1
             start = self.pos
             if self.text[self.pos] == len(self.text):
                 self.error("EOF inside quoted string")
-            while self.text[self.pos] != "\"":
+            while self.text[self.pos] != '"':
                 if self.pos == len(self.text):
                     self.error("EOF inside quoted string")
                     return None
                 if self.text[self.pos] == "\n":
                     self.line += 1
                 self.pos += 1
-            self.token = self.text[start:self.pos]
+            self.token = self.text[start : self.pos]
             self.pos += 1
         else:
             start = self.pos
             if self.text[self.pos] in self.single:
                 self.pos += 1
             else:
-                while (self.pos < len(self.text)
-                       and not self.text[self.pos].isspace()
-                       and self.text[self.pos] not in self.single):
+                while (
+                    self.pos < len(self.text)
+                    and not self.text[self.pos].isspace()
+                    and self.text[self.pos] not in self.single
+                ):
                     self.pos += 1
-            self.token = self.text[start:self.pos]
+            self.token = self.text[start : self.pos]
         return self.token
 
     def unget_token(self):
